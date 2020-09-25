@@ -2,18 +2,15 @@
 
 namespace App\Commands;
 
-use App\Services\Status\UserStatusService;
-
 class Start extends BaseCommand
 {
 
     function processCommand()
     {
-        if ($this->user->status === UserStatusService::NEW) {
-            $this->triggerCommand(LanguageSelect::class);
-        } elseif ($this->user->status === UserStatusService::DONE || $this->user->status === UserStatusService::FORECAST_CITY_SELECT) {
-            $this->triggerCommand(MainMenu::class);
-        }
+        $this->getBot()->sendMessage($this->user->chat_id, 'Вітаємо!
+Цей бот для мешканців ЖК «Панорама на Лесницькій»
+В цьому боті Ви можете оплатити он-лайн комунальні платежі , перевірити стан свого рахунку та знайти контактні телефони у разі виникнення питань. ');
+        $this->triggerCommand(MainMenu::class);
     }
 
 }

@@ -13,9 +13,8 @@ class MainMenu extends BaseCommand
         $this->user->status = UserStatusService::DONE;
         $this->user->save();
 
-        $this->getBot()->sendMessageWithKeyboard($this->user->chat_id, $this->text['mainMenu'], new ReplyKeyboardMarkup([
-            [$this->text['forecast']],
-            [$this->text['feedback'], $this->text['settings']]
+        $this->getBot()->sendMessageWithKeyboard($this->user->chat_id, 'Головне меню', new ReplyKeyboardMarkup([
+            ['Особистий кабінет', 'Зворотній зв\'язок'],
         ], false, true));
     }
 

@@ -3,7 +3,8 @@
     "illuminate/database": "^7.5",
     "vlucas/phpdotenv": "^4.1",
     "telegram-bot/api": "^2.3",
-    "fabpot/goutte": "^4.0"
+    "fabpot/goutte": "^4.0",
+    "google/apiclient": "^2.0"
   },
   "autoload": {
     "psr-4": {

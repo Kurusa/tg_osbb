@@ -36,10 +36,9 @@ class WebhookController
                     if (isset($handlers[$text])) {
                         $handler_class_name = $handlers[$text];
                     } else {
-                        $key = $this->processKeyboardCommand($text);
                         $handlers = include(__DIR__ . '/config/keyboard_сommands.php');
-                        if ($key && $handlers[$key]) {
-                            $handler_class_name = $handlers[$key];
+                        if ($handlers[$text]) {
+                            $handler_class_name = $handlers[$text];
                         } else {
                             $handlers = include(__DIR__ . '/config/status_сommands.php');
 
@@ -60,21 +59,6 @@ class WebhookController
 
         $client->run();
 
-    }
-
-    protected function processKeyboardCommand($text): ?string
-    {
-        $locales = ChangeLanguageService::$locales;
-
-        foreach ($locales as $locale) {
-            $config = include('config/lang/' . $locale . '/bot.php');
-            $translations = \array_flip($config);
-            if (isset($translations[$text])) {
-                return $translations[$text];
-            }
-        }
-
-        return null;
     }
 
 }

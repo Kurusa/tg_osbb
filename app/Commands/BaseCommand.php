@@ -57,7 +57,6 @@ abstract class BaseCommand
             $this->user = User::where('chat_id', $this->bot_user->getId())->first();
         }
 
-        $this->text = require(__DIR__ . '/../config/lang/' . strtolower($this->user['lang']) . '/bot.php');
         $this->processCommand();
     }
 
